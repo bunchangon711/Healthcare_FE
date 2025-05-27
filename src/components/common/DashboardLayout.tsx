@@ -17,7 +17,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, title }) =>
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate('/');
   };
 
   // Define navigation links based on user role
@@ -63,7 +63,9 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, title }) =>
     <div className="dashboard-layout">
       <aside className={`sidebar ${mobileMenuOpen ? 'mobile-open' : ''} ${sidebarOpen ? 'open' : 'closed'}`}>
         <div className="sidebar-header">
-          <h1 className="app-title">MedCare</h1>
+          <Link to="/" className="app-title-link">
+            <h1 className="app-title">MedCare</h1>
+          </Link>
           <div className="header-buttons">
             <button 
               className="toggle-sidebar-btn" 
@@ -98,6 +100,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, title }) =>
         </nav>
         
         <div className="sidebar-footer">
+          <Link to="/" className="home-button">
+            <span className="nav-icon">🏠</span>
+            {sidebarOpen && <span className="nav-label">Home</span>}
+          </Link>
           <button onClick={handleLogout} className="logout-button">
             <span className="nav-icon">🚪</span>
             {sidebarOpen && <span className="nav-label">Logout</span>}

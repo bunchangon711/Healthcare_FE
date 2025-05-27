@@ -19,7 +19,7 @@ const Login: React.FC = () => {
     
     try {
       await login(email, password);
-      navigate('/'); // Will redirect based on role
+      navigate('/dashboard'); // Will redirect based on role
     } catch (err: any) {
       setError(err.response?.data?.detail || 'Failed to login. Please check your credentials.');
     } finally {
@@ -68,6 +68,10 @@ const Login: React.FC = () => {
             <Link to="/forgot-password">Forgot Password?</Link>
             <span className="divider">•</span>
             <Link to="/register">Create Account</Link>
+          </div>
+          
+          <div className="auth-home-link">
+            <Link to="/">← Back to Home</Link>
           </div>
         </form>
       </div>

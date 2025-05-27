@@ -4,6 +4,9 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 import PrivateRoute from './components/common/PrivateRoute';
 import './App.css';
 
+// Import landing page
+import LandingPage from './pages/LandingPage';
+
 // Import pages
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
@@ -41,10 +44,14 @@ const App: React.FC = () => {
       <Router>
         <Routes>
           {/* Public routes */}
+          <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/password-reset-confirm/:token" element={<ResetPassword />} />
+          
+          {/* Dashboard redirect based on role */}
+          <Route path="/dashboard" element={<RoleBasedRedirect />} />
           
           {/* Role-based private routes */}
           {/* Patient routes */}
@@ -53,6 +60,7 @@ const App: React.FC = () => {
             <Route path="/patient/profile" element={<PatientProfile />} />
             <Route path="/patient/records" element={<MedicalRecords />} />
             <Route path="/patient/appointments" element={<Appointments />} />
+            <Route path="/patient/billing" element={<Bills />} />
             <Route path="/patient/bills" element={<Bills />} />
             <Route path="/patient/bills/:billId" element={<Bills />} />
           </Route>
@@ -83,9 +91,6 @@ const App: React.FC = () => {
           {/* Error routes */}
           <Route path="/unauthorized" element={<Unauthorized />} />
           <Route path="/not-found" element={<NotFound />} />
-          
-          {/* Root redirect based on role */}
-          <Route path="/" element={<RoleBasedRedirect />} />
           
           {/* Catch-all route */}
           <Route path="*" element={<Navigate to="/not-found" />} />

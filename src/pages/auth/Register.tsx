@@ -174,6 +174,10 @@ const Register: React.FC = () => {
           <div className="auth-links">
             Already have an account? <Link to="/login">Login</Link>
           </div>
+          
+          <div className="auth-home-link">
+            <Link to="/">← Back to Home</Link>
+          </div>
         </form>
       </div>
     </div>
