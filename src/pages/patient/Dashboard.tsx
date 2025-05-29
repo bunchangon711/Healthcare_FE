@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DashboardLayout from '../../components/common/DashboardLayout';
 import { useAuth } from '../../contexts/AuthContext';
+import ChatbotComponent from '../../components/patient/ChatbotComponent';
+import '../../styles/chatbot.css';
 
 const PatientDashboard: React.FC = () => {
   const { user } = useAuth();
+  const [isChatOpen, setIsChatOpen] = useState(false);
+
+  const toggleChat = () => {
+    setIsChatOpen(!isChatOpen);
+  };
 
   return (
     <DashboardLayout title="Patient Dashboard">
@@ -56,6 +63,14 @@ const PatientDashboard: React.FC = () => {
           <p>No recent activity to display.</p>
         </div>
       </div>
+
+      {/* AI Chatbot Bubble */}
+      <div className="chat-bubble" onClick={toggleChat}>
+        <span role="img" aria-label="Medical Assistant">👨‍⚕️</span>
+      </div>
+      
+      {/* Chatbot Dialog */}
+      {isChatOpen && <ChatbotComponent onClose={toggleChat} />}
     </DashboardLayout>
   );
 };

@@ -255,17 +255,17 @@ const LandingPage: React.FC = () => {
               <div className="footer-column">
                 <h3>Legal</h3>
                 <ul>
-                  <li><a href="#">Privacy Policy</a></li>
-                  <li><a href="#">Terms of Service</a></li>
-                  <li><a href="#">Cookie Policy</a></li>
+                  <li><Link to="/privacy-policy">Privacy Policy</Link></li>
+                  <li><Link to="/terms-of-service">Terms of Service</Link></li>
+                  <li><Link to="/cookie-policy">Cookie Policy</Link></li>
                 </ul>
               </div>
               <div className="footer-column">
                 <h3>Company</h3>
                 <ul>
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Contact</a></li>
-                  <li><a href="#">Careers</a></li>
+                  <li><Link to="/about-us">About Us</Link></li>
+                  <li><Link to="/contact">Contact</Link></li>
+                  <li><Link to="/careers">Careers</Link></li>
                 </ul>
               </div>
             </div>
